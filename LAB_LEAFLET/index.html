@@ -1,0 +1,55 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My First Leaflet</title>
+<!-- Link Leaflet css and JavaScript -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+</head>
+<body>
+  <!-- Divide map bounding box -->
+  <div id="map" style= "width: 800px ; height: 600px"></div>
+  <!-- set center and link map (google streetmap) -->
+<script>
+
+  var map = L.map('map').setView([9.094194,99.356624],16);
+
+  mapLink ='<a href="http://openstreetmap.org">Nattanicha</a>';
+
+  L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data & copy; ' +mapLink,
+      maxZoom: 18,
+    }).addTo(map);
+
+    var greenIcon = L.icon({
+    iconUrl: 'https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png',
+    shadowUrl: 'https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png',
+
+    iconSize: [38, 95], // size of the icon
+    shadowSize: [50, 64], // size of the shadow
+    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62], // the same for the shadow
+    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
+var marker = L.marker([9.095639,99.358001],
+  {
+    icon: greenIcon,
+    draggable:true,
+    title:'ตึกวิทย์',
+    opacity:1.5
+  }
+)
+  .addTo(map)
+  .bindPopup("<b>คณะวิทยาศาสตร์</b>")
+  .openPopup();
+
+
+
+</script>
+</body>
+</html>
